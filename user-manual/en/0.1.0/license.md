@@ -1,7 +1,8 @@
 # License
 
-Orfeo v0.1.0 and all of its components are open-source and released under the
-MIT license.
+Orfeo v0.1.0, Dataline v0.1.0, and all other related components — unless
+otherwise specified — have been designed and implemented by Pierre-Emmanuel
+Lévesque and are released as open-source software under the MIT license.
 
 ---
 
