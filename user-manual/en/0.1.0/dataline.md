@@ -184,20 +184,20 @@ Following is a custom Extended Backus-Naur Form for Dataline:
 
 1     | R
 2       R
-2.5     D5  "Dal"
-3       D5~ "mio"
+2.5     D5  Dal
+3       D5~ mio
 4       D5
-4.25    D5  "per-"
-4.5     D5  "mes-"
-4.875   D5  "so a-"
-5     | D5  "ma-"
-6       D5  "to"
+4.25    D5  per-
+4.5     D5  mes-
+4.875   D5  so a-
+5     | D5  ma-
+6       D5  to
 7       R
-7.5     D5  "a"
-8       C5  "noi"
-8.5     A4  "ne"
-9     | B♭4 "ve-"
-11      A4  "gno"
+7.5     D5  a
+8       C5  noi
+8.5     A4  ne
+9     | B♭4 ve-
+11      A4  gno
 12    |
 ```
 
