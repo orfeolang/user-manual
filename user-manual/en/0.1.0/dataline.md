@@ -21,12 +21,12 @@ applications to specify.
 
 ## Extension
 
-Dataline files should be saved with the `.dataline` extension.
+Dataline files use the `.dataline` extension.
 
 ## Syntax
 
-Dataline uses two word types called a location and a datum, and one phrase type
-made from those words called a point.
+Dataline's syntax is composed of two word types called a location and a datum,
+and one phrase type — made from those words — called a point.
 
 ### Location
 
