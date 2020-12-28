@@ -97,7 +97,7 @@ whitespace. Empty lines are permitted.
 Following is a symbol guide for the Point Layouts and EBNF sections below:
 
 ```guide
-? = zero or one (optional)
+? = zero or one
 * = zero or more
 + = one or more
 | = logical OR
