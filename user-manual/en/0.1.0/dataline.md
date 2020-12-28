@@ -21,7 +21,7 @@ applications to specify.
 
 ## Extension
 
-Dataline files use the `.dataline` extension.
+Dataline files should use the `.dataline` extension.
 
 ## Syntax
 
