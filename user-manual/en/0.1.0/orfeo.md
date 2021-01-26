@@ -537,11 +537,15 @@ out portions of code.
 ![16-Note Shuffle](assets/images/examples/16-note-shuffle.svg)
 
 ```orfeo
-(:4/4
-  ( (b.hh _ hh  ) (hh   _  b.hh) )
-  ( (s.hh _ hh  ) (b.hh _  hh  ) )
-  ( (hh   _ b.hh) (hh   _  b.hh) )
-  ( (s.hh _ hh  ) (hh   hh hh  ) )
+(:=
+  (:0 "bd = bass drum, sn = snare, hh = hi-hat")
+
+  (:4/4
+    ( (bd.hh _ hh   ) (hh   _  bd.hh) )
+    ( (sn.hh _ hh   ) (b.hh _  hh   ) )
+    ( (hh    _ bd.hh) (hh   _  bd.hh) )
+    ( (sn.hh _ hh   ) (hh   hh hh   ) )
+  )
 )
 ```
 
@@ -575,20 +579,34 @@ out portions of code.
 
 ### Light Show
 
-// the indicators show seconds
+Controlling a light show using durations as seconds.
 
 ```orfeo
 (:=
-  (:1   "turn system on")
-  (:1   "turn system on")
-
-  (:3.5 "initiate blue sequence")
-  (:7   "fade to black" )
+  (:0.1 "turn system on")
+  (:2   "fade in red lights")
+  (:4   "fade in green lights")
+  (:6   "fade in blue lights")
+  (:10  "initiate psychedelic flicker sequence")
+  (:16  "fade all lights to black")
+  (:0.1 "turn system off")
 )
 ```
 
 ```dataline
+0    turn system on
+0.1  fade in red lights
+2.1  fade in green lights
+6.1  fade in blue lights
+12.1 initiate psychedelic flicker sequence
+22.1 fade all lights to black
+38.1 turn system off
+38.2
 ```
+
+---
+---
+---
 
 ```EBNF
 <Orfeo_v0.1.0>           = <ws>* <tuplet-expr>? <ws>*
@@ -606,12 +624,15 @@ out portions of code.
 <duration-equals>        = <colon> <equals>
 <duration-number>        = <colon> <nonnegative-number>
 <duration-timesignature> = <colon> <timesignature>
-<timesignature>          = <nonnegative-number> <division> <nonnegative-number>
+<timesignature>          = <nonnegative-number> <division> <positive-number>
 <nonnegative-number>     = <nonnegative-int> | <nonnegative-real>
 <nonnegative-int>        = <zero> | <positive-int>
 <nonnegative-real>       = (<nonnegative-int> <period> <digit>*) |
                            (<period> <digit>+)
+<positive-number>        = <positive-int> | <positive-real>
 <positive-int>           = <nonzero-digit> <digit>*
+<positive-real>          = (<positive-int> <period> <digit>*) |
+                           (<zero>? <period> <zero>* <digit>+ <zero>*)
 <digit>                  = <zero> | <nonzero-digit>
 <datum>                  = <rhythm-flag>* <datum-body> <rhythm-dot>*
 <datum-body>             = (<datum-chars>* <datum-chars-no-period>) | <string>
