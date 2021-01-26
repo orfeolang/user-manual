@@ -534,19 +534,61 @@ out portions of code.
 
 ### 16th-Note Shuffle
 
-![Orfeo: La Musica's Entrance](assets/images/examples/16-note-shuffle.svg)
+![16-Note Shuffle](assets/images/examples/16-note-shuffle.svg)
 
 ```orfeo
-(:=
-  (:4 )
-  (:4 )
-  (:4 )
+(:4/4
+  ( (b.hh _ hh  ) (hh   _  b.hh) )
+  ( (s.hh _ hh  ) (b.hh _  hh  ) )
+  ( (hh   _ b.hh) (hh   _  b.hh) )
+  ( (s.hh _ hh  ) (hh   hh hh  ) )
 )
 ```
 
+```dataline
+0     b.hh
+0.166 _
+0.333 hh
+0.5   hh
+0.666 _
+0.833 b.hh
+1     s.hh
+1.166 _
+1.333 hh
+1.5   b.hh
+1.666 _
+1.833 hh
+2     hh
+2.166 _
+2.333 b.hh
+2.5   hh
+2.666 _
+2.833 b.hh
+3     s.hh
+3.166 _
+3.333 hh
+3.5   hh
+3.666 hh
+3.833 hh
+4
+```
 
+### Light Show
 
+// the indicators show seconds
 
+```orfeo
+(:=
+  (:1   "turn system on")
+  (:1   "turn system on")
+
+  (:3.5 "initiate blue sequence")
+  (:7   "fade to black" )
+)
+```
+
+```dataline
+```
 
 ## Copyright
 
