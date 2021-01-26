@@ -502,7 +502,7 @@ out portions of code.
 
 ### La Musica’s Entrance
 
-![Orfeo: La Musica's Entrance](assets/images/Orfeo-La-Musica-Entrance.svg)
+![Orfeo: La Musica's Entrance](assets/images/examples/Orfeo-La-Musica-Entrance.svg)
 
 ```orfeo
 (:=
@@ -534,6 +534,8 @@ out portions of code.
 
 ### 16th-Note Shuffle
 
+![Orfeo: La Musica's Entrance](assets/images/examples/16-note-shuffle.svg)
+
 ```orfeo
 (:=
   (:4 )
@@ -553,95 +555,3 @@ Copyright (c) 2019-2020, [Pierre-Emmanuel Lévesque](https://github.com/pelevesq
 ## License
 
 MIT
-
-Also must talk about spacing issues
-
-
-♮♭♯
-
-
-
-
-
-
-
-
-% LilyBin
-\version "2.18.2"
-\score{
-  {
-    \new DrumStaff
-    \drummode {
-      \stemUp
-      \numericTimeSignature
-	  \override TupletBracket.bracket-visibility = ##f
-
-      \tuplet 3/2 {
-        <bd cymr>16[
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-        \set stemLeftBeamCount = #1
-        cymr
-      }
-      \tuplet 3/2 {
-        \set stemRightBeamCount = #1
-        cymr
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-		<bd cymr>]
-      }
-
-      \tuplet 3/2 {
-        <sn cymr>[
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-        \set stemLeftBeamCount = #1
-        cymr
-      }
-      \tuplet 3/2 {
-        \set stemRightBeamCount = #1
-        <bd cymr>
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-		cymr]
-      }
-
-      \tuplet 3/2 {
-        cymr[
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-        \set stemLeftBeamCount = #1
-        <bd cymr>
-      }
-      \tuplet 3/2 {
-        \set stemRightBeamCount = #1
-        cymr
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-		<bd cymr>]
-      }
-
-      \tuplet 3/2 {
-        <sn cymr>[
-        \set stemLeftBeamCount = #1
-        \set stemRightBeamCount = #1
-        r
-        \set stemLeftBeamCount = #1
-        cymr
-      }
-      \tuplet 3/2 {
-        cymr
-        cymr
-		cymr]
-      }
-    }
-  }
-  \layout{}
-  \midi{}
-}

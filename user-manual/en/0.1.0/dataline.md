@@ -201,7 +201,7 @@ Following is a custom Extended Backus-Naur Form for Dataline:
 12    |
 ```
 
-![Orfeo: La Musica's Entrance](assets/images/Orfeo-La-Musica-Entrance.svg)
+![Orfeo: La Musica's Entrance](assets/images/examples/Orfeo-La-Musica-Entrance.svg)
 
 ### Monteverdi's Life
 
