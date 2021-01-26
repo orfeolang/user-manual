@@ -590,6 +590,64 @@ out portions of code.
 ```dataline
 ```
 
+```EBNF
+<Orfeo_v0.1.0>           = <ws>* <tuplet-expr>? <ws>*
+<tuplet-expr>            = <rhythm-flag>*
+                           <parenthesis-open>
+                           <ws>*
+                           (<duration> | <datum> | <tuplet-expr>)?
+                           (<ws>+ (<datum> | <tuplet-expr>))*
+                           <ws>*
+                           <parenthesis-close>
+                           <rhythm-dot>*
+<duration>               = <duration-equals> |
+                           <duration-number> |
+                           <duration-timesignature>
+<duration-equals>        = <colon> <equals>
+<duration-number>        = <colon> <nonnegative-number>
+<duration-timesignature> = <colon> <timesignature>
+<timesignature>          = <nonnegative-number> <division> <nonnegative-number>
+<nonnegative-number>     = <nonnegative-int> | <nonnegative-real>
+<nonnegative-int>        = <zero> | <positive-int>
+<nonnegative-real>       = (<nonnegative-int> <period> <digit>*) |
+                           (<period> <digit>+)
+<positive-int>           = <nonzero-digit> <digit>*
+<digit>                  = <zero> | <nonzero-digit>
+<datum>                  = <rhythm-flag>* <datum-body> <rhythm-dot>*
+<datum-body>             = (<datum-chars>* <datum-chars-no-period>) | <string>
+<datum-chars>            = <period> | <datum-chars-no-period>
+<datum-chars-no-period>  = <underscore> |
+                           <alphanumeric> |
+                           <division> |
+                           <square-bracket> |
+                           <music-accidental> |
+                           <hyphen>
+<alphanumeric>           = <letter> | <digit>
+<letter>                 = <lowercase-letter> | <uppercase-letter>
+<square-bracket>         = <square-bracket-open> | <square-bracket-close>
+<string>                 = <doublequote> <nondoublequote>* <doublequote>
+<rhythm-dot>             = <period>
+<rhythm-flag>            = ^
+<ws>                     = \s
+<lowercase-letter>       = [a-z]
+<uppercase-letter>       = [A-Z]
+<zero>                   = 0
+<nonzero-digit>          = [1-9]
+<music-accidental>       = [♮♭♯]
+<parenthesis-open>       = (
+<parenthesis-close>      = )
+<square-bracket-open>    = [
+<square-bracket-close>   = ]
+<colon>                  = :
+<equals>                 = =
+<period>                 = .
+<underscore>             = _
+<division>               = /
+<hyphen>                 = -
+<doublequote>            = "
+<nondoublequote>         = [^"]
+```
+
 ## Copyright
 
 Copyright (c) 2019-2020, [Pierre-Emmanuel Lévesque](https://github.com/pelevesque)
