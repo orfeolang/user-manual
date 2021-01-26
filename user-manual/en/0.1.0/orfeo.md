@@ -267,14 +267,92 @@ out portions of code.
 > [!NOTE]
 > Real commenting will be part of Orfeo v0.2.0
 
+## Grammar
+
+### Symbol Guide
+
+Following is a symbol guide for the EBNF section below:
+
+```guide
+? = zero or one
+* = zero or more
++ = one or more
+| = logical OR
+( = group start
+) = group end
+
+<ws> = whitespace
+```
+
+### EBNF
+
+Following is a custom Extended Backus-Naur Form for Orfeo:
+
+```EBNF
+<Orfeo_v0.1.0>           = <ws>* <tuplet-expr>? <ws>*
+<tuplet-expr>            = <rhythm-flag>*
+                           <parenthesis-open>
+                           <ws>*
+                           (<duration> | <datum> | <tuplet-expr>)?
+                           (<ws>+ (<datum> | <tuplet-expr>))*
+                           <ws>*
+                           <parenthesis-close>
+                           <rhythm-dot>*
+<duration>               = <duration-equals> |
+                           <duration-number> |
+                           <duration-timesignature>
+<duration-equals>        = <colon> <equals>
+<duration-number>        = <colon> <nonnegative-number>
+<duration-timesignature> = <colon> <timesignature>
+<timesignature>          = <nonnegative-number> <division> <positive-number>
+<nonnegative-number>     = <nonnegative-int> | <nonnegative-real>
+<nonnegative-int>        = <zero> | <positive-int>
+<nonnegative-real>       = (<nonnegative-int> <period> <digit>*) |
+                           (<period> <digit>+)
+<positive-number>        = <positive-int> | <positive-real>
+<positive-int>           = <nonzero-digit> <digit>*
+<positive-real>          = (<positive-int> <period> <digit>*) |
+                           (<zero>? <period> <zero>* <digit>+ <zero>*)
+<digit>                  = <zero> | <nonzero-digit>
+<datum>                  = <rhythm-flag>* <datum-body> <rhythm-dot>*
+<datum-body>             = (<datum-chars>* <datum-chars-no-period>) | <string>
+<datum-chars>            = <period> | <datum-chars-no-period>
+<datum-chars-no-period>  = <underscore> |
+                           <alphanumeric> |
+                           <division> |
+                           <square-bracket> |
+                           <music-accidental> |
+                           <hyphen>
+<alphanumeric>           = <letter> | <digit>
+<letter>                 = <lowercase-letter> | <uppercase-letter>
+<square-bracket>         = <square-bracket-open> | <square-bracket-close>
+<string>                 = <doublequote> <nondoublequote>* <doublequote>
+<rhythm-dot>             = <period>
+<rhythm-flag>            = ^
+<ws>                     = \s
+<lowercase-letter>       = [a-z]
+<uppercase-letter>       = [A-Z]
+<zero>                   = 0
+<nonzero-digit>          = [1-9]
+<music-accidental>       = [♮♭♯]
+<parenthesis-open>       = (
+<parenthesis-close>      = )
+<square-bracket-open>    = [
+<square-bracket-close>   = ]
+<colon>                  = :
+<equals>                 = =
+<period>                 = .
+<underscore>             = _
+<division>               = /
+<hyphen>                 = -
+<doublequote>            = "
+<nondoublequote>         = [^"]
+```
+
 ## Writing Rhythms
 
 - This section shows how to write rhythms.
 - when there is more than one way in orfeo, we show it
-
----
----
----
 
 ### Whole Note
 
@@ -602,71 +680,6 @@ Controlling a light show using durations as seconds.
 22.1 fade all lights to black
 38.1 turn system off
 38.2
-```
-
----
----
----
-
-```EBNF
-<Orfeo_v0.1.0>           = <ws>* <tuplet-expr>? <ws>*
-<tuplet-expr>            = <rhythm-flag>*
-                           <parenthesis-open>
-                           <ws>*
-                           (<duration> | <datum> | <tuplet-expr>)?
-                           (<ws>+ (<datum> | <tuplet-expr>))*
-                           <ws>*
-                           <parenthesis-close>
-                           <rhythm-dot>*
-<duration>               = <duration-equals> |
-                           <duration-number> |
-                           <duration-timesignature>
-<duration-equals>        = <colon> <equals>
-<duration-number>        = <colon> <nonnegative-number>
-<duration-timesignature> = <colon> <timesignature>
-<timesignature>          = <nonnegative-number> <division> <positive-number>
-<nonnegative-number>     = <nonnegative-int> | <nonnegative-real>
-<nonnegative-int>        = <zero> | <positive-int>
-<nonnegative-real>       = (<nonnegative-int> <period> <digit>*) |
-                           (<period> <digit>+)
-<positive-number>        = <positive-int> | <positive-real>
-<positive-int>           = <nonzero-digit> <digit>*
-<positive-real>          = (<positive-int> <period> <digit>*) |
-                           (<zero>? <period> <zero>* <digit>+ <zero>*)
-<digit>                  = <zero> | <nonzero-digit>
-<datum>                  = <rhythm-flag>* <datum-body> <rhythm-dot>*
-<datum-body>             = (<datum-chars>* <datum-chars-no-period>) | <string>
-<datum-chars>            = <period> | <datum-chars-no-period>
-<datum-chars-no-period>  = <underscore> |
-                           <alphanumeric> |
-                           <division> |
-                           <square-bracket> |
-                           <music-accidental> |
-                           <hyphen>
-<alphanumeric>           = <letter> | <digit>
-<letter>                 = <lowercase-letter> | <uppercase-letter>
-<square-bracket>         = <square-bracket-open> | <square-bracket-close>
-<string>                 = <doublequote> <nondoublequote>* <doublequote>
-<rhythm-dot>             = <period>
-<rhythm-flag>            = ^
-<ws>                     = \s
-<lowercase-letter>       = [a-z]
-<uppercase-letter>       = [A-Z]
-<zero>                   = 0
-<nonzero-digit>          = [1-9]
-<music-accidental>       = [♮♭♯]
-<parenthesis-open>       = (
-<parenthesis-close>      = )
-<square-bracket-open>    = [
-<square-bracket-close>   = ]
-<colon>                  = :
-<equals>                 = =
-<period>                 = .
-<underscore>             = _
-<division>               = /
-<hyphen>                 = -
-<doublequote>            = "
-<nondoublequote>         = [^"]
 ```
 
 ## Copyright
