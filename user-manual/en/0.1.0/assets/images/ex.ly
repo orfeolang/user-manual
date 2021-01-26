@@ -123,6 +123,24 @@
 % Orfeo Examples
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Orfeo, La Musica (excerpt)
+\score {
+  \relative c'' {
+    \autoBeamOff
+    \time 4/2
+    r2 r4 d d2 ~d8 d d8. d16 |
+    d2 d r4 d c a |
+    bes1 a |
+  }
+  \addlyrics {
+    Dal mio "per -" "mes -" "so a -"
+    "ma -" to a noi ne "ve -" gno
+  }
+  \layout {
+    \context { \Score \omit BarNumber }
+  }
+}
+
 % 16th-Note Shuffle
 \score{
   {
